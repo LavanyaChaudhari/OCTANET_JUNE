@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lavanya's To-Do List</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  </head>
+  <body>
+    <div class="center">
+      <div class="container">
+        <h1>Lavanya's To-Do List</h1>
+        <form id="task-form">
+          <div class="form-group">
+            <label for="task">New Task:</label>
+            <input type="text" id="task" name="task" placeholder="Enter task...">
+          </div>
+          <div class="form-group">
+            <label for="priority">Priority:</label>
+            <select id="priority" name="priority">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="due-date">Due Date:</label>
+            <input type="date" id="due-date" name="due-date">
+          </div>
+          <button type="submit" class="btn">Add Task</button>
+        </form>
+        <ul class="task-list" id="task-list">
+          <li class="task-item">
+            <div class="task-info">
+              <input type="checkbox" id="task1">
+              <label for="task1">Buy groceries</label>
+              <span class="priority low">Low</span>
+              <span class="due-date">Due: 2023-07-15</span>
+            </div>
+            <div class="task-actions">
+              <button class="btn edit-btn"><img src="https://img.icons8.com/material-outlined/24/000000/edit--v1.png"/></button>
+              <button class="btn delete-btn" onclick="deleteTask(this)"><img src="https://img.icons8.com/material-outlined/24/000000/trash--v1.png"/></button>
+            </div>
+          </li>
+          <li class="task-item">
+            <div class="task-info">
+              <input type="checkbox" id="task2">
+              <label for="task2">Finish project</label>
+              <span class="priority high">High</span>
+              <span class="due-date">Due: 2023-07-20</span>
+            </div>
+            <div class="task-actions">
+              <button class="btn edit-btn"><img src="https://img.icons8.com/material-outlined/24/000000/edit--v1.png"/></button>
+              <button class="btn delete-btn" onclick="deleteTask(this)"><img src="https://img.icons8.com/material-outlined/24/000000/trash--v1.png"/></button>
+            </div>
+          </li>
+          <li class="task-item">
+            <div class="task-info">
+              <input type="checkbox" id="task3">
+              <label for="task3">Complete Assignments</label>
+              <span class="priority medium">Medium</span>
+              <span class="due-date">Due: 2023-07-10</span>
+            </div>
+            <div class="task-actions">
+              <button class="btn edit-btn"><img src="https://img.icons8.com/material-outlined/24/000000/edit--v1.png"/></button>
+              <button class="btn delete-btn" onclick="deleteTask(this)"><img src="https://img.icons8.com/material-outlined/24/000000/trash--v1.png"/></button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      const taskForm = document.getElementById('task-form');
+      const taskList = document.getElementById('task-list');
+
+      // Add task
+      taskForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const taskInput = document.getElementById('task');
+        const priorityInput = document.getElementById('priority');
+        const dueDateInput = document.getElementById('due-date');
+
+        // Create task item
+        const taskItem = document.createElement('li');
+        taskItem.classList.add('task-item');
+
+        // Create task info
+        const taskInfo = document.createElement('div');
+        taskInfo.classList.add('task-info');
+
+        // Create checkbox
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `task${taskList.childElementCount + 1}`;
+
+        // Create label
+        const label = document.createElement('label');
+        label.htmlFor = `task${taskList.childElementCount + 1}`;
+        label.textContent = taskInput.value;
+
+        // Create priority
+        const priority = document.createElement('span');
+        priority.classList.add('priority');
+        priority.classList.add(priorityInput.value);
+        priority.textContent = priorityInput.value.charAt(0).toUpperCase() + priorityInput.value.slice(1);
+
+        // Create due date
+        const dueDate = document.createElement('span');
+        dueDate.classList.add('due-date');
+        dueDate.textContent = `Due: ${dueDateInput.value}`;
+
+        // Add checkbox, label, priority, and due date to task info
+        taskInfo.appendChild(checkbox);
+        taskInfo.appendChild(label);
+        taskInfo.appendChild(priority);
+        taskInfo.appendChild(dueDate);
+
+        // Create task actions
+        const taskActions = document.createElement('div');
+        taskActions.classList.add('task-actions');
+
+        // Create edit button
+        const editButton = document.createElement('button');
+        editButton.classList.add('btn');
+        editButton.classList.add('edit-btn');
+        const editIcon = document.createElement('img');
+        editIcon.src = 'https://img.icons8.com/material-outlined/24/000000/edit--v1.png';
+        editButton.appendChild(editIcon);
+
+        // Create delete button
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('btn');
+        deleteButton.classList.add('delete-btn');
+        deleteButton.onclick = function() { deleteTask(this); };
+        const deleteIcon = document.createElement('img');
+        deleteIcon.src = 'https://img.icons8.com/material-outlined/24/000000/trash--v1.png';
+        deleteButton.appendChild(deleteIcon);
+
+        // Add edit and delete buttons to task actions
+        taskActions.appendChild(editButton);
+        taskActions.appendChild(deleteButton);
+
+        // Add task info and task actions to task item
+        taskItem.appendChild(taskInfo);
+        taskItem.appendChild(taskActions);
+
+        // Add task item to task list
+        taskList.appendChild(taskItem);
+
+        // Clear form inputs
+        taskInput.value = '';
+        priorityInput.value = 'low';
+        dueDateInput.value = '';
+      });
+
+      // Delete task
+      function deleteTask(button) {
+        button.parentElement.parentElement.remove();
+      }
+    </script>
+  </body>
+</html>

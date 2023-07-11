@@ -1,0 +1,158 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background-color: #f2f2f2;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 90px rgba(6, 6, 6, 0.2);
+    padding: 30px;
+    width: 700px;
+  }
+  
+  h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  form {
+    margin-bottom: 30px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"],
+  select,
+  input[type="date"] {
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  select {
+    appearance: none;
+    background-image: url('https://img.icons8.com/material-outlined/24/000000/expand-arrow--v1.png');
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    padding-right: 30px;
+  }
+  
+  .btn {
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #3e8e41;
+  }
+  
+  .task-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .task-item {
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  
+  .task-info {
+    align-items: center;
+    display: flex;
+  }
+  
+  .task-info label {
+    font-size: 18px;
+    font-weight: 700;
+    margin-left: 10px;
+  }
+  
+  .priority {
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    margin-left: 10px;
+    padding: 5px 10px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  .low {
+    background-color: #4CAF50;
+  }
+  
+  .medium {
+    background-color: #FFC107;
+  }
+  
+  .high {
+    background-color: #F44336;
+  }
+  
+  .due-date {
+    font-size: 14px;
+    font-weight: 700;
+    margin-left: 10px;
+  }
+  
+  .task-actions {
+    display: flex;
+  }
+  
+  .task-actions button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 0;
+  }
+  
+  .task-actions button:hover {
+    opacity: 0.7;
+  }
+  
+  .task-actions img {
+    height: 24px;
+    width: 24px;
+  }
